@@ -8,4 +8,12 @@ class Contact:
         self.name = name
         self.email = email
         Contact.all_contacts.append(self) 
-        
+
+class Supplier(Contact):
+
+    def order(self, order):
+        print(
+            "If this were a real system we would send "
+            f"'{order}' order to '{self.name}'"
+        ) 
+
