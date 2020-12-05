@@ -1,9 +1,21 @@
 # contact.py
 
+class ContactList(list):
+    
+    def search(self, name):
+        """Return all contacts that contain the search value
+        in their name."""
+        matching_contacts = []
+        for contact in self:
+            if name in contact.name:
+                matching_contacts.append(contact)
+        return matching_contacts
+
 class Contact:
     
-    all_contacts = []
-    
+    # all_contacts = []
+    all_contacts = ContactList()    
+
     def __init__(self, name, email):
         self.name = name
         self.email = email
@@ -16,4 +28,36 @@ class Supplier(Contact):
             "If this were a real system we would send "
             f"'{order}' order to '{self.name}'"
         ) 
+
+class Friend(Contact):
+    
+    def __init__(self, name, email, phone):
+        # self.name = name
+        # self.email = email
+        super().__init__(name, email)
+        self.phone = phone
+
+class MailSender:
+    
+    def send_mail(self, message):
+        print("Sending mail to " + self.email)
+        # Add e-mail logic here
+
+class EmailableContact(Contact, MailSender):
+    pass 
+
+def main1():
+    c1 = Contact("John A", "johna@example.net")
+    c2 = Contact("John B", "johnb@example.net")
+    c3 = Contact("Jenna C", "jennac@example.net")
+    print([c.name for c in Contact.all_contacts.search('John')]) 
+
+def main2():
+    e = EmailableContact("John Smith", "jsmith@example.net")
+    print(Contact.all_contacts )
+    e.send_mail("Hello, test e-mail here")
+
+if __name__ == '__main__':
+    # main1() 
+    main2()
 
