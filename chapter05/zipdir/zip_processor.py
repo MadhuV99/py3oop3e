@@ -3,6 +3,7 @@ import sys
 import shutil
 import zipfile
 from pathlib import Path
+from PIL import Image
 
 class ZipProcessor:
     
@@ -44,13 +45,26 @@ class ZipReplace(ZipProcessor):
             with filename.open("w") as file:
                 file.write(contents)
 
+
+class ScaleZip(ZipProcessor):
+    def process_files(self):
+        '''Scale each image in the directory to 640x480'''
+        for filename in self.temp_directory.iterdir():
+            im = Image.open(str(filename))
+            scaled = im.resize((640, 480))
+            scaled.save(filename)
+
 if __name__ == "__main__":
     pass 
     # ZipReplace(*sys.argv[1:4]).process_zip() 
  
-    filename = 'textfiles.zip' 
-    search_string = 'Hello'
-    replace_string = 'a'
-    ZipReplace(filename, search_string, replace_string).process_zip()
+    # filename = 'textfiles.zip' 
+    # search_string = 'Hello'
+    # replace_string = 'a'
+    # ZipReplace(filename, search_string, replace_string).process_zip()
 
+    # ScaleZip(*sys.argv[1:4]).process_zip()
+
+    filename = 'images.zip' 
+    ScaleZip(filename).process_zip()
     
