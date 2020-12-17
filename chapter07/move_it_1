@@ -1,0 +1,6 @@
+move_it_1.txt
+	options = Options(username="dusty", password="drowssap",
+	debug=True)
+    options['debug']
+    options['port']
+    options['username']
