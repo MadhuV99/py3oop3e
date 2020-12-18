@@ -5,7 +5,10 @@ import smtplib
 from email.mime.text import MIMEText
 
 class MailingList:
-    """Manage groups of e-mail addresses for sending e-mails."""
+    """Manage groups of e-mail addresses for sending e-mails.
+       In another terminal, run:
+            python -m smtpd -n -c DebuggingServer localhost:1025
+    """
 
     def __init__(self, data_file):
         self.data_file = data_file
