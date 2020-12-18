@@ -13,7 +13,7 @@ class Options:
     'password': None,
     'debug': False,
     }
-    
+
     def __init__(self, **kwargs):
         # self.options = dict(Options.default_options)
         # self.options.update(kwargs)
