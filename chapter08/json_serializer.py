@@ -34,10 +34,11 @@ def main():
     # print(json.dumps(c.__dict__))
     
     c = Contact("John", "Smith")
-    print(json.dumps(c, cls=ContactEncoder))
+    data = json.dumps(c, cls=ContactEncoder)
+    print(data)
 
-    data = ('{"is_contact": true, "last": "smith",'
-            '"full": "john smith", "first": "john"}')
+    # data = ('{"is_contact": true, "last": "smith",'
+    #         '"full": "john smith", "first": "john"}')
     c = json.loads(data, object_hook=decode_contact)
     print(c)
     print(c.full_name)
