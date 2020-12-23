@@ -26,11 +26,20 @@ class NumberIterator:
 def main():
     iterable = NumberIterable(10)
     iterator = iter(iterable)
-    while True:
-        try:
-            print(next(iterator))
-        except StopIteration:
-            break
+
+    # while True:
+    #     try:
+    #         print(next(iterator))
+    #     except StopIteration:
+    #         break
+
+    try:
+        while print(next(iterator)) == None:
+            pass
+    except StopIteration:
+        pass
+
+    print('Done!')
 
 if __name__ == '__main__':
     main()            

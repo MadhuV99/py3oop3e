@@ -26,11 +26,15 @@ class CapitalIterator:
 def main():
     iterable = CapitalIterable('the quick brown fox jumps over the lazy dog')
     iterator = iter(iterable)
-    while True:
-        try:
-            print(next(iterator))
-        except StopIteration:
-            break
+    
+    # while True:
+    #     try:
+    #         print(next(iterator))
+    #     except StopIteration:
+    #         break
+
+    for i in iterable:
+        print(i)
 
 if __name__ == '__main__':
     main()            
